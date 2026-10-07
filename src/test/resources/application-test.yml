@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:payments;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;DB_CLOSE_DELAY=-1;LOCK_TIMEOUT=10000
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      # H2 reports enum columns differently from PostgreSQL; schema validation runs in PostgresContainerTest.
+      ddl-auto: none
+
+app:
+  security:
+    jwt-secret: test-only-secret-not-used-anywhere-else-0123456789
+  outbox:
+    publisher:
+      enabled: false
